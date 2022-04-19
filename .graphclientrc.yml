@@ -3,6 +3,7 @@ sources:
     handler:
       graphql:
         endpoint: https://api.thegraph.com/subgraphs/name/amxx/nft-mainnet
+        batch: false
     transforms:
       - prefix:
           value: NFT_
@@ -20,12 +21,13 @@ sources:
             # Teach Type Merging how to resolve this
             - queryFieldName: NFT_accounts
               keyField: id
-              keyArg: 'where.id_in'
+              keyArg: "where.id_in"
 
   - name: ENS
     handler:
       graphql:
         endpoint: https://api.thegraph.com/subgraphs/name/ensdomains/ens
+        batch: false
     transforms:
       - prefix:
           value: ENS_
@@ -43,9 +45,9 @@ sources:
       - typeMerging:
           queryFields:
             # Without batching
-            - queryFieldName: ENS_account
+            - queryFieldName: ENS_accounts
               keyField: id
-              keyArg: id
+              keyArg: "where.id_in"
 
 additionalTypeDefs: |
   extend type Query {
@@ -54,4 +56,7 @@ additionalTypeDefs: |
   }
 
 additionalResolvers:
-  - './resolvers'
+  - "./resolvers"
+
+serve:
+  browser: false
