@@ -1,0 +1,57 @@
+sources:
+  - name: NFT
+    handler:
+      graphql:
+        endpoint: https://api.thegraph.com/subgraphs/name/amxx/nft-mainnet
+    transforms:
+      - prefix:
+          value: NFT_
+          includeRootOperations: true
+          ignore:
+            - _SubgraphErrorPolicy_
+        # Rename Account to User to apply Type Merging
+      - rename:
+          - from:
+              type: NFT_Account
+            to:
+              type: User
+      - typeMerging:
+          queryFields:
+            # Teach Type Merging how to resolve this
+            - queryFieldName: NFT_accounts
+              keyField: id
+              keyArg: 'where.id_in'
+
+  - name: ENS
+    handler:
+      graphql:
+        endpoint: https://api.thegraph.com/subgraphs/name/ensdomains/ens
+    transforms:
+      - prefix:
+          value: ENS_
+          includeRootOperations: true
+          ignore:
+            - _SubgraphErrorPolicy_
+
+      # Rename Account to User to apply Type Merging
+      - rename:
+          - from:
+              type: ENS_Account
+            to:
+              type: User
+
+      - typeMerging:
+          queryFields:
+            # Without batching
+            - queryFieldName: ENS_account
+              keyField: id
+              keyArg: id
+
+additionalTypeDefs: |
+  extend type Query {
+    """Get a user by their ENS Name"""
+    findUserEns(name: String!): User
+  }
+
+additionalResolvers:
+  - './resolvers'

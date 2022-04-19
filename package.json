@@ -1,0 +1,44 @@
+{
+  "name": "ens-nft-graph-client",
+  "description": "Playing around with ENS, NFT subgraphs and Graph Client",
+  "version": "0.1.0",
+  "author": "Saihajpreet Singh <saihajpreet.singh@gmail.com> (https://saihaj.dev/)",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "graph:build": "graphclient build",
+    "graph:serve": "graphclient serve-dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "generate": "graphql-codegen --config codegen.yml"
+  },
+  "dependencies": {
+    "@graphprotocol/client-urql": "0.0.2",
+    "@graphql-mesh/runtime": "^0.33.13",
+    "@graphql-yoga/node": "2.3.0",
+    "graphql": "16.3.0",
+    "next": "12.1.5",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "urql": "^2.2.0"
+  },
+  "devDependencies": {
+    "@graphprotocol/client-cli": "0.0.3",
+    "@graphql-codegen/cli": "2.6.2",
+    "@graphql-codegen/gql-tag-operations-preset": "1.3.0",
+    "@graphql-codegen/typescript": "2.4.8",
+    "@graphql-codegen/typescript-operations": "2.3.5",
+    "@graphql-codegen/urql-introspection": "2.1.1",
+    "@graphql-mesh/transform-prefix": "0.11.31",
+    "@graphql-mesh/transform-rename": "0.12.32",
+    "@graphql-mesh/transform-type-merging": "0.3.41",
+    "@types/react": "^18.0.5",
+    "eslint": "8.13.0",
+    "eslint-config-next": "12.1.5",
+    "prettier": "2.6.2"
+  },
+  "resolutions": {
+    "graphql": "16.3.0"
+  }
+}
