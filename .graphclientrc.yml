@@ -3,7 +3,6 @@ sources:
     handler:
       graphql:
         endpoint: https://api.thegraph.com/subgraphs/name/amxx/nft-mainnet
-        batch: false
     transforms:
       - prefix:
           value: NFT_
@@ -27,7 +26,6 @@ sources:
     handler:
       graphql:
         endpoint: https://api.thegraph.com/subgraphs/name/ensdomains/ens
-        batch: false
     transforms:
       - prefix:
           value: ENS_
