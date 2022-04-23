@@ -20,7 +20,7 @@ sources:
             # Teach Type Merging how to resolve this
             - queryFieldName: NFT_accounts
               keyField: id
-              keyArg: 'where.id_in'
+              keyArg: "where.id_in"
 
   - name: ENS
     handler:
@@ -43,9 +43,9 @@ sources:
       - typeMerging:
           queryFields:
             # Without batching
-            - queryFieldName: ENS_account
+            - queryFieldName: ENS_accounts
               keyField: id
-              keyArg: id
+              keyArg: "where.id_in"
 
 additionalTypeDefs: |
   extend type Query {
@@ -54,4 +54,7 @@ additionalTypeDefs: |
   }
 
 additionalResolvers:
-  - './resolvers'
+  - "./resolvers"
+
+serve:
+  browser: false
