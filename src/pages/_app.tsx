@@ -1,11 +1,11 @@
 import '../styles/globals.css'
 import { createClient, Provider } from 'urql'
 import { graphExchange } from '@graphprotocol/client-urql'
-import { getBuiltGraphClient } from '../../.graphclient'
+import * as GraphClient from '../../.graphclient'
 
 const client = createClient({
   url: 'http://localhost:4000/graphql',
-  exchanges: [graphExchange(getBuiltGraphClient)],
+  exchanges: [graphExchange(GraphClient)],
 })
 
 function MyApp({ Component, pageProps }) {
