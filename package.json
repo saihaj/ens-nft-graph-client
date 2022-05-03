@@ -19,8 +19,10 @@
     "@graphql-yoga/node": "2.4.0",
     "graphql": "16.4.0",
     "next": "12.1.5",
+    "next-transpile-modules": "^9.0.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "undici": "^5.1.1",
     "urql": "^2.2.0"
   },
   "devDependencies": {

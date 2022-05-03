@@ -21,9 +21,11 @@ specifiers:
   eslint-config-next: 12.1.5
   graphql: 16.4.0
   next: 12.1.5
+  next-transpile-modules: ^9.0.0
   prettier: 2.6.2
   react: 18.1.0
   react-dom: 18.1.0
+  undici: ^5.1.1
   urql: ^2.2.0
 
 dependencies:
@@ -32,8 +34,10 @@ dependencies:
   '@graphql-yoga/node': 2.4.0_graphql@16.4.0
   graphql: 16.4.0
   next: 12.1.5_react-dom@18.1.0+react@18.1.0
+  next-transpile-modules: 9.0.0
   react: 18.1.0
   react-dom: 18.1.0_react@18.1.0
+  undici: 5.1.1
   urql: 2.2.0_graphql@16.4.0+react@18.1.0
 
 devDependencies:
@@ -3010,7 +3014,7 @@ packages:
       form-data-encoder: 1.7.2
       formdata-node: 4.3.2
       node-fetch: 2.6.7
-      undici: 5.0.0
+      undici: 5.1.1
       web-streams-polyfill: 3.2.1
     transitivePeerDependencies:
       - encoding
@@ -3023,7 +3027,7 @@ packages:
       form-data-encoder: 1.7.2
       formdata-node: 4.3.2
       node-fetch: 2.6.7
-      undici: 5.0.0
+      undici: 5.1.1
       web-streams-polyfill: 3.2.1
     transitivePeerDependencies:
       - encoding
@@ -3244,6 +3248,14 @@ packages:
       once: 1.4.0
     dev: true
 
+  /enhanced-resolve/5.9.3:
+    resolution: {integrity: sha512-Bq9VSor+kjvW3f9/MiiR4eE3XYgOl7/rS8lnSxbRbF3kS0B2r+Y9w5krBWxZgDxASVZbdYrn5wT4j/Wb0J9qow==}
+    engines: {node: '>=10.13.0'}
+    dependencies:
+      graceful-fs: 4.2.10
+      tapable: 2.2.1
+    dev: false
+
   /error-ex/1.3.2:
     resolution: {integrity: sha512-7dFHNmqeFSEt2ZBsCriorKnn3Z2pj+fd9kmI6QoWw4//DL+icEBfc0U7qJCisqrTsKTjw4fNFy2pW9OqStD84g==}
     dependencies:
@@ -3294,7 +3306,6 @@ packages:
   /escalade/3.1.1:
     resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==}
     engines: {node: '>=6'}
-    dev: true
 
   /escape-html/1.0.3:
     resolution: {integrity: sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg=}
@@ -3944,6 +3955,10 @@ packages:
       url-parse-lax: 3.0.0
     dev: true
 
+  /graceful-fs/4.2.10:
+    resolution: {integrity: sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==}
+    dev: false
+
   /graphql-config/4.3.0_graphql@16.4.0:
     resolution: {integrity: sha512-Uiu3X7+s5c056WyrvdZVz2vG1fhAipMlYmtiCU/4Z2mX79OXDr1SqIon2MprC/pExIWJfAQZCcjYDY76fPBUQg==}
     engines: {node: '>= 10.0.0'}
@@ -4017,10 +4032,7 @@ packages:
     resolution: {integrity: sha512-y1WtSu6jiW5QdDjK3RWMRTdK+xAAtSIq3IxmtnhxzH7bCkHV/z8VZa8fsSG4BcWbjQQtCQYQvMnvbQ+TBCyJRQ==}
     engines: {node: '>=10'}
     peerDependencies:
-      graphql: '*'
-    peerDependenciesMeta:
-      graphql:
-        optional: true
+      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
       graphql: 16.4.0
       tslib: 2.3.1
@@ -4952,6 +4964,13 @@ packages:
     resolution: {integrity: sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==}
     engines: {node: '>= 0.6'}
     dev: true
+
+  /next-transpile-modules/9.0.0:
+    resolution: {integrity: sha512-VCNFOazIAnXn1hvgYYSTYMnoWgKgwlYh4lm1pKbSfiB3kj5ZYLcKVhfh3jkPOg1cnd9DP+pte9yCUocdPEUBTQ==}
+    dependencies:
+      enhanced-resolve: 5.9.3
+      escalade: 3.1.1
+    dev: false
 
   /next/12.1.5_react-dom@18.1.0+react@18.1.0:
     resolution: {integrity: sha512-YGHDpyfgCfnT5GZObsKepmRnne7Kzp7nGrac07dikhutWQug7hHg85/+sPJ4ZW5Q2pDkb+n0FnmLkmd44htIJQ==}
@@ -6016,6 +6035,11 @@ packages:
       - encoding
     dev: true
 
+  /tapable/2.2.1:
+    resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
+    engines: {node: '>=6'}
+    dev: false
+
   /text-table/0.2.0:
     resolution: {integrity: sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=}
     dev: true
@@ -6194,10 +6218,6 @@ packages:
     resolution: {integrity: sha1-5z3T17DXxe2G+6xrCufYxqadUPo=}
     engines: {node: '>=0.10.0'}
     dev: true
-
-  /undici/5.0.0:
-    resolution: {integrity: sha512-VhUpiZ3No1DOPPQVQnsDZyfcbTTcHdcgWej1PdFnSvOeJmOVDgiOHkunJmBLfmjt4CqgPQddPVjSWW0dsTs5Yg==}
-    engines: {node: '>=12.18'}
 
   /undici/5.1.1:
     resolution: {integrity: sha512-CmK9JzLSMGx+2msOao8LhkKn3J7eKo2M50v0KZQ2XbiHcGqLS1HiIj01ceIm3jbUYlspw/FTSb6nMdSNyvVyaQ==}
