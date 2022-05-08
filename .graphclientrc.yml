@@ -20,7 +20,7 @@ sources:
             # Teach Type Merging how to resolve this
             - queryFieldName: NFT_accounts
               keyField: id
-              keyArg: "where.id_in"
+              keyArg: 'where.id_in'
 
   - name: ENS
     handler:
@@ -45,16 +45,20 @@ sources:
             # Without batching
             - queryFieldName: ENS_accounts
               keyField: id
-              keyArg: "where.id_in"
+              keyArg: 'where.id_in'
 
 additionalTypeDefs: |
+  input UserAccount {
+    name: String
+    address: String
+  }
   extend type Query {
-    """Get a user by their ENS Name"""
-    findUserEns(name: String!): User
+    """Get a user by their ENS Name or Public address"""
+    findUser(input: UserAccount!): User
   }
 
 additionalResolvers:
-  - "./resolvers"
+  - './resolvers'
 
 serve:
   browser: false
